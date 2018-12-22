@@ -1,15 +1,25 @@
 survived:
   type: int
   na_value: -1
+  encoding: ''
+  target: false
 class:
   type: int
   na_value: -1
+  encoding: ''
+  target: false
 sex:
   type: str
   na_value: ''
+  encoding: OneHotEncoder
+  target: false
 age:
   type: float
   na_value: .nan
+  encoding: OneHotEncoder
+  target: false
 embarked:
   type: str
   na_value: ''
+  encoding: OneHotEncoder
+  target: false

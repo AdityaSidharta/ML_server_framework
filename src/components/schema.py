@@ -100,6 +100,7 @@ class Schema:
         return [column_name for column_name in self.get_col_names() if self.get_col_target(column_name) == True]
 
     def infer_schema(self, df):
+        self.init = True
         df = df.infer_objects()
         int_cols = df.select_dtypes("int").columns
         float_cols = df.select_dtypes("float").columns
