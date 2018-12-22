@@ -12,6 +12,7 @@ ipykernel = "*"
 oyaml = "*"
 
 [dev-packages]
+pandas-summary = "*"
 
 [requires]
 python_version = "3.6"

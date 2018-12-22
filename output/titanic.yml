@@ -1,0 +1,15 @@
+survived:
+  type: int
+  na_value: -1
+class:
+  type: int
+  na_value: -1
+sex:
+  type: str
+  na_value: ''
+age:
+  type: float
+  na_value: .nan
+embarked:
+  type: str
+  na_value: ''

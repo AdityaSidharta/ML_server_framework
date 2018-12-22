@@ -16,7 +16,7 @@ def write_data(df, table_name):
 
 
 def read_yaml(path):
-    with open(path, 'r') as stream:
+    with open(path, "r") as stream:
         try:
             yaml_file = yaml.load(stream)
         except yaml.YAMLError as exc:
@@ -25,5 +25,5 @@ def read_yaml(path):
 
 
 def write_yaml(yaml_file, path):
-    with open(path, 'w') as outfile:
+    with open(path, "w") as outfile:
         yaml.dump(yaml_file, stream=outfile, default_flow_style=False)
