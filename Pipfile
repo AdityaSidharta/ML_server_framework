@@ -10,6 +10,8 @@ scikit-learn = "*"
 tqdm = "*"
 ipykernel = "*"
 oyaml = "*"
+nbstripout = "*"
+pylint = "*"
 
 [dev-packages]
 pandas-summary = "*"
