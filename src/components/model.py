@@ -8,7 +8,9 @@ class Model:
         self.init = False
 
     def _is_init(self):
-        assert self.init, "Model have not been initialized using load_model / train_model"
+        assert (
+            self.init
+        ), "Model have not been initialized using load_model / train_model"
 
     def load_model(self, model_path):
         self.model = joblib.load(model_path)

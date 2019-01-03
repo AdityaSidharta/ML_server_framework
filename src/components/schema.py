@@ -29,7 +29,7 @@ class Schema:
 
     def get_col_target(self, column_name):
         self._is_init()
-        return self.yaml_file[column_name]['target']
+        return self.yaml_file[column_name]["target"]
 
     def get_col_names(self):
         self._is_init()
@@ -93,11 +93,19 @@ class Schema:
 
     def get_non_target_cols(self):
         self._is_init()
-        return [column_name for column_name in self.get_col_names() if not self.get_col_target(column_name)]
+        return [
+            column_name
+            for column_name in self.get_col_names()
+            if not self.get_col_target(column_name)
+        ]
 
     def get_target_cols(self):
         self._is_init()
-        return [column_name for column_name in self.get_col_names() if self.get_col_target(column_name)]
+        return [
+            column_name
+            for column_name in self.get_col_names()
+            if self.get_col_target(column_name)
+        ]
 
     def infer_schema(self, df):
         self.init = True
@@ -114,14 +122,14 @@ class Schema:
                     "type": "int",
                     "na_value": -1,
                     "encoding": "",
-                    "target": False
+                    "target": False,
                 }
             elif column_name in float_cols:
                 yaml_result[column_name] = {
                     "type": "float",
                     "na_value": np.nan,
                     "encoding": "OneHotEncoder",
-                    "target": False
+                    "target": False,
                 }
             elif column_name in date_cols:
                 yaml_result[column_name] = {
@@ -129,7 +137,7 @@ class Schema:
                     "na_value": np.datetime64("NaT"),
                     "format": "",  # TODO : Perform automatic inference on the datetime format,
                     "encoding": "",
-                    "target": False
+                    "target": False,
                 }
             elif column_name in time_cols:
                 yaml_result[column_name] = {
@@ -137,14 +145,14 @@ class Schema:
                     "na_value": np.timedelta64("NaT"),
                     "format": "",
                     "encoding": "OneHotEncoder",
-                    "target": False
+                    "target": False,
                 }
             else:
                 yaml_result[column_name] = {
                     "type": "str",
                     "na_value": "",
                     "encoding": "OneHotEncoder",
-                    "target": False
+                    "target": False,
                 }
         self.yaml_file = yaml_result
 

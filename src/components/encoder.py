@@ -11,7 +11,9 @@ class Encoder:
         self.init = False
 
     def _is_init(self):
-        assert self.init, "Encoder have not been initialized using read_encoder / create_encoder"
+        assert (
+            self.init
+        ), "Encoder have not been initialized using read_encoder / create_encoder"
 
     def get_n_features(self):
         self._is_init()
@@ -29,9 +31,17 @@ class Encoder:
         encoder_columns = schema.get_oh_encoding_cols()
         for column in encoder_columns:
             df[column] = df[column].astype(str)
-        self.encoder = ColumnTransformer([('oh_enc', OneHotEncoder(sparse=False, handle_unknown='ignore'),
-                                           encoder_columns)],
-                                         remainder='passthrough', sparse_threshold=0.0)
+        self.encoder = ColumnTransformer(
+            [
+                (
+                    "oh_enc",
+                    OneHotEncoder(sparse=False, handle_unknown="ignore"),
+                    encoder_columns,
+                )
+            ],
+            remainder="passthrough",
+            sparse_threshold=0.0,
+        )
         self.encoder.fit(df)
         self.init = True
 
