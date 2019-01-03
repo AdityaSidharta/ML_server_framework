@@ -4,8 +4,9 @@ import pandas as pd
 def df_na_value(df, schema):
     column_names = schema.get_col_names()
     for column_name in column_names:
-        column_na_value = schema.get_col_na_value(column_name)
-        df[column_name] = df[column_name].fillna(column_na_value)
+        if column_name in df.columns:
+            column_na_value = schema.get_col_na_value(column_name)
+            df[column_name] = df[column_name].fillna(column_na_value)
     return df
 
 
@@ -19,15 +20,20 @@ def df_format(df, schema):
     time_cols = schema.get_time_cols()
 
     for column_name in int_cols:
-        df[column_name] = df[column_name].astype(int)
+        if column_name in df.columns:
+            df[column_name] = df[column_name].astype(int)
     for column_name in float_cols:
-        df[column_name] = df[column_name].astype(float)
+        if column_name in df.columns:
+            df[column_name] = df[column_name].astype(float)
     for column_name in str_cols:
-        df[column_name] = df[column_name].astype(str)
+        if column_name in df.columns:
+            df[column_name] = df[column_name].astype(str)
     for column_name in date_cols:
-        date_format = schema.get_col_format(column_name)
-        df[column_name] = pd.to_datetime(df[column_name], format=date_format)
+        if column_name in df.columns:
+            date_format = schema.get_col_format(column_name)
+            df[column_name] = pd.to_datetime(df[column_name], format=date_format)
     for column_name in time_cols:
-        time_format = schema.get_col_format(column_name)
-        df[column_name] = pd.to_datetime(df[column_name], format=time_format)
+        if column_name in df.columns:
+            time_format = schema.get_col_format(column_name)
+            df[column_name] = pd.to_datetime(df[column_name], format=time_format)
     return df

@@ -19,11 +19,11 @@ class Model:
         joblib.dump(self.model, model_path)
 
     def train_model(self, x_array, y_array):
-        self.model = LogisticRegressionCV()
+        self.model = LogisticRegressionCV(100, cv=5, max_iter=1000, n_jobs=-1)
         self.model.fit(x_array, y_array)
         self.init = True
 
     def predict_model(self, x_array):
         self._is_init()
         result = self.model.predict_proba(x_array)
-        return result
+        return result[:, 0]

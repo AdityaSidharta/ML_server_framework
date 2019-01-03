@@ -93,11 +93,11 @@ class Schema:
 
     def get_non_target_cols(self):
         self._is_init()
-        return [column_name for column_name in self.get_col_names() if self.get_col_target(column_name) == False]
+        return [column_name for column_name in self.get_col_names() if not self.get_col_target(column_name)]
 
     def get_target_cols(self):
         self._is_init()
-        return [column_name for column_name in self.get_col_names() if self.get_col_target(column_name) == True]
+        return [column_name for column_name in self.get_col_names() if self.get_col_target(column_name)]
 
     def infer_schema(self, df):
         self.init = True

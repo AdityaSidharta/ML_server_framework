@@ -3,7 +3,7 @@ help:
 	@echo "format - performing black formatting on the project"
 
 setup:
-	bash ./libs.setup.sh
+	bash ./libs/setup.sh
 
 format:
 	black ./src

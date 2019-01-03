@@ -2,11 +2,11 @@ survived:
   type: int
   na_value: -1
   encoding: ''
-  target: false
+  target: true
 class:
   type: int
   na_value: -1
-  encoding: ''
+  encoding: OneHotEncoder
   target: false
 sex:
   type: str
@@ -15,8 +15,8 @@ sex:
   target: false
 age:
   type: float
-  na_value: .nan
-  encoding: OneHotEncoder
+  na_value: 0
+  encoding: ''
   target: false
 embarked:
   type: str
