@@ -30,6 +30,7 @@ def create_db_connection(username, password, ip_address, port):
     engine_path = "postgresql://{}:{}@{}:{}".format(
         username, password, ip_address, port
     )
+    print(engine_path)
     engine = create_engine(engine_path)
     connection = engine.connect()
     return connection

@@ -4,7 +4,7 @@ project_path = os.getenv("PROJECT_PATH")
 postgres_username = os.getenv("POSTGRES_USERNAME")
 postgres_password = os.getenv("POSTGRES_PASSWORD")
 postgres_ipaddress = os.getenv("POSTGRES_IPADDRESS")
-postgres_port = os.getenv("POSTGRES_PORT")
+postgres_port = int(os.getenv("POSTGRES_PORT"))
 
 data_path = os.path.join(project_path, "data")
 output_path = os.path.join(project_path, "output")
