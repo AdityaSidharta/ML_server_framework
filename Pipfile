@@ -12,6 +12,8 @@ ipykernel = "*"
 oyaml = "*"
 nbstripout = "*"
 pylint = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
 
 [dev-packages]
 pandas-summary = "*"
