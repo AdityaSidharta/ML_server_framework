@@ -8,6 +8,7 @@ pandas = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
 oyaml = "*"
+minio = "*"
 
 [dev-packages]
 pandas-summary = "*"
@@ -17,7 +18,6 @@ tqdm = "*"
 ipykernel = "*"
 nbstripout = "*"
 pylint = "*"
-
 
 [requires]
 python_version = "3.6"

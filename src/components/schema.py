@@ -1,12 +1,15 @@
-from src.utils.io import read_yaml, write_yaml
+import os
+from src.utils.io import read_yaml, write_yaml, download_minio, write_minio
+from src.utils.envs import data_path
 import numpy as np
 from collections import OrderedDict
 
 
 class Schema:
-    def __init__(self):
+    def __init__(self, minio_client):
         self.init = False
         self.yaml_file = None
+        self.minio_client = minio_client
 
     def _is_init(self):
         assert self.init, "Schema has not been initialized"
@@ -156,10 +159,12 @@ class Schema:
                 }
         self.yaml_file = yaml_result
 
-    def load_schema(self, yaml_path):
+    def load_schema(self, schema_name):
         self.init = True
-        self.yaml_file = read_yaml(yaml_path)
+        download_minio(self.minio_client, "schema", schema_name)
+        self.yaml_file = read_yaml(schema_name)
 
-    def write_schema(self, out_path):
+    def write_schema(self, schema_name):
         self._is_init()
-        write_yaml(self.yaml_file, out_path)
+        write_yaml(self.yaml_file, schema_name)
+        write_minio(self.minio_client, "schema", schema_name)

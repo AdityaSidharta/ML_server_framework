@@ -1,8 +1,8 @@
 from src.components.encoder import Encoder
 
 
-def create_encoder_titanic(df, schema):
-    encoder = Encoder()
+def create_encoder_titanic(df, schema, minio_client, bucket_name):
+    encoder = Encoder(minio_client, bucket_name)
     encoder.create_encoder(df, schema)
     return encoder
 

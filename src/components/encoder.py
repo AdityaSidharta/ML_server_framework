@@ -1,14 +1,20 @@
-import numpy as np
-
+from src.utils.io import (
+    download_minio,
+    write_minio,
+    read_model,
+    write_model
+)
+from src.utils.ds import get_latest_version
 from sklearn.compose import ColumnTransformer
-from sklearn.externals import joblib
 from sklearn.preprocessing import OneHotEncoder
 
 
 class Encoder:
-    def __init__(self):
+    def __init__(self, minio_client, bucket_name):
         self.encoder = None
         self.init = False
+        self.minio_client = minio_client
+        self.bucket_name = bucket_name
 
     def _is_init(self):
         assert (
@@ -19,13 +25,17 @@ class Encoder:
         self._is_init()
         return self.encoder.n_values_.sum()
 
-    def read_encoder(self, encoder_path):
-        self.encoder = joblib.load(encoder_path)
+    def load_encoder(self, encoder_name):
         self.init = True
+        bucket_name = get_latest_version(self.minio_client)
+        print(bucket_name)
+        download_minio(self.minio_client, bucket_name, encoder_name)
+        self.encoder = read_model(encoder_name)
 
-    def write_encoder(self, encoder_path):
+    def save_encoder(self, encoder_name):
         self._is_init()
-        joblib.dump(self.encoder, encoder_path)
+        write_model(self.encoder, encoder_name)
+        write_minio(self.minio_client, self.bucket_name, encoder_name)
 
     def create_encoder(self, df, schema):
         encoder_columns = schema.get_oh_encoding_cols()
