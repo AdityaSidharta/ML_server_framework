@@ -10,6 +10,7 @@ help:
 
 setup:
 	bash libs/setup.sh
+	pipenv shell
 
 format:
 	black src
@@ -21,10 +22,13 @@ jupyter:
 	pipenv run jupyter notebook
 
 docker-clean:
-	bash docker/clean_docker.sh
+	bash libs/clean_docker.sh
 
 docker-postgres:
-	bash docker/docker-postgres/run_db.sh
+	bash libs/run_postgres.sh
 
 docker-minio:
-	bash docker/docker-minio/run_minio.sh
+	bash libs/run_minio.sh
+
+fill-data:
+	bash libs/run_fill_data.sh
