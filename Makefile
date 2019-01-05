@@ -6,7 +6,9 @@ help:
 	@echo "pylint - performing pylint to check the code quality"
 	@echo "jupyter - open jupyter notebook on the project"
 	@echo "docker-clean - prune all docker volumes, containers, and images"
-	@echo "docker-postgres - run and setup postgress database"
+	@echo "docker-postgres - run and setup postgres database"
+	@echo "docker-minio - run and setup minio database"
+	@echo "fill-data - fill up postgres database and minio database with required data"
 
 setup:
 	bash libs/setup.sh
