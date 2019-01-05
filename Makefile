@@ -27,5 +27,5 @@ jupyter:
 docker-clean:
 	bash docker/clean_docker.sh
 
-docker-postgres: docker-clean
+docker-postgres: docker-clean config
 	bash docker/docker-postgres/run_db.sh

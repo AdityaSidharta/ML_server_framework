@@ -5,18 +5,19 @@ name = "pypi"
 
 [packages]
 pandas = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
+oyaml = "*"
+
+[dev-packages]
+pandas-summary = "*"
 numpy = "*"
 scikit-learn = "*"
 tqdm = "*"
 ipykernel = "*"
-oyaml = "*"
 nbstripout = "*"
 pylint = "*"
-sqlalchemy = "*"
-psycopg2 = "*"
 
-[dev-packages]
-pandas-summary = "*"
 
 [requires]
 python_version = "3.6"
