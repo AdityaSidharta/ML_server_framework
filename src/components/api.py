@@ -1,12 +1,12 @@
-from src.components.schema import Schema
-from src.components.model import Model
-from src.components.encoder import Encoder
+import datetime as dt
 
+from src.components.encoder import Encoder
+from src.components.model import Model
+from src.components.schema import Schema
 from src.data_prep.prep_titanic import do_format, do_fill_na_value
 from src.feat_eng.feat_eng_titanic import do_encode, create_encoder_titanic
 from src.ml_model.ml_model_titanic import create_model_titanic
 from src.utils.ds import split_target_columns
-import datetime as dt
 
 
 class Api:

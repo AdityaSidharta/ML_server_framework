@@ -9,8 +9,6 @@ sqlalchemy = "*"
 psycopg2 = "*"
 oyaml = "*"
 minio = "*"
-
-[dev-packages]
 pandas-summary = "*"
 numpy = "*"
 scikit-learn = "*"

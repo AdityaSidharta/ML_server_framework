@@ -1,3 +1,6 @@
+from sklearn.linear_model import LogisticRegressionCV
+
+from src.utils.ds import get_latest_version
 from src.utils.io import (
     download_minio,
     read_model,
@@ -5,8 +8,6 @@ from src.utils.io import (
     write_model,
     list_bucket_minio,
 )
-from src.utils.ds import get_latest_version
-from sklearn.linear_model import LogisticRegressionCV
 
 
 class Model:

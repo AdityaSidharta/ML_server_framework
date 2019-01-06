@@ -1,8 +1,10 @@
 import os
-import pandas as pd
-from src.utils.envs import data_path
+
 import oyaml as yaml
+import pandas as pd
 from sklearn.externals import joblib
+
+from src.utils.envs import data_path
 
 
 def read_data(table_name):

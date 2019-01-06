@@ -1,7 +1,8 @@
-from src.utils.io import download_minio, write_minio, read_model, write_model
-from src.utils.ds import get_latest_version
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
+
+from src.utils.ds import get_latest_version
+from src.utils.io import download_minio, write_minio, read_model, write_model
 
 
 class Encoder:

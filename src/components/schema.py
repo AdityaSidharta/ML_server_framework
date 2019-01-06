@@ -1,8 +1,10 @@
 import os
-from src.utils.io import read_yaml, write_yaml, download_minio, write_minio
-from src.utils.envs import data_path
-import numpy as np
 from collections import OrderedDict
+
+import numpy as np
+
+from src.utils.envs import data_path
+from src.utils.io import read_yaml, write_yaml, download_minio, write_minio
 
 
 class Schema:
