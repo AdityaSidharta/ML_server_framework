@@ -16,6 +16,7 @@ setup:
 
 format:
 	black src
+	nbstripout */*
 
 pylint:
 	pylint src
