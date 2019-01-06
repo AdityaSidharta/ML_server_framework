@@ -9,3 +9,4 @@ export POSTGRES_PORT=5432
 export MINIO_ACCESS_KEY=ml_server_minio
 export MINIO_SECRET_KEY=ml_server_password
 export MINIO_PORT=9000
+export FLASK_PORT=1234

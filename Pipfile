@@ -18,6 +18,8 @@ tqdm = "*"
 ipykernel = "*"
 nbstripout = "*"
 pylint = "*"
+flask = "*"
+flask_restful = "*"
 
 [requires]
 python_version = "3.6"

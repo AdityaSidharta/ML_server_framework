@@ -46,3 +46,6 @@ titanic_filename = "titanic.csv"
 titanic_schema_path = os.path.join(data_path, "titanic_schema.yml")
 titanic_schema_bucket = "schema"
 titanic_schema_filename = "titanic_schema.yml"
+
+titanic_encoder_filename = "titanic_encoder.pkl"
+titanic_model_filename = "titanic_model.pkl"
