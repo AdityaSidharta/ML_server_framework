@@ -3,7 +3,7 @@ from flask_restful import reqparse, Resource
 
 from src.components.api import Api
 from src.flask import app, api
-from src.utils.conn import minio_client
+from src.utils.conn import docker_minio_client
 from src.utils.envs import (
     titanic_schema_filename,
     titanic_encoder_filename,
@@ -94,12 +94,12 @@ def run_deploy():
         titanic_schema_filename,
         titanic_encoder_filename,
         titanic_model_filename,
-        minio_client,
+        docker_minio_client,
     )
     model.load_api()
     api.add_resource(Prediction, "/", resource_class_kwargs={"model": model})
     app.config["BUNDLE_ERRORS"] = True
-    app.run(host="0.0.0.0", port=1235)
+    app.run(host="0.0.0.0", port=1234)
 
 
 if __name__ == "__main__":

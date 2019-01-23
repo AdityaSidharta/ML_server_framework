@@ -22,7 +22,7 @@ pylint:
 	pylint src
 
 jupyter:
-	pipenv run jupyter notebook
+	bash libs/run_jupyter.sh
 
 docker-clean:
 	bash libs/clean_docker.sh
@@ -32,6 +32,9 @@ docker-postgres:
 
 docker-minio:
 	bash libs/run_minio.sh
+
+docker-compose:
+	bash libs/run_docker_compose.sh
 
 fill-data:
 	bash libs/run_fill_data.sh
