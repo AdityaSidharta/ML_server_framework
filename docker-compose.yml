@@ -24,3 +24,4 @@ services:
       - ${FLASK_PORT}:1234
     depends_on:
       - ml_server_minio
+      - ml_server_db

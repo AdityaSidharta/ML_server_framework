@@ -1,3 +1,4 @@
+import time
 from src.utils.io import list_bucket_minio
 
 
@@ -10,5 +11,9 @@ def split_target_columns(df, schema):
 
 
 def get_latest_version(minio_client):
-    list_version = [x for x in list_bucket_minio(minio_client) if x.isdigit()]
+    list_version = []
+    while not list_version:
+        list_version = [x for x in list_bucket_minio(minio_client) if x.isdigit()]
+        print("Waiting for model....")
+        time.sleep(10)
     return sorted(list_version)[-1]

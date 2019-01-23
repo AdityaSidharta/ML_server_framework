@@ -4,7 +4,6 @@ WORKDIR /usr/src/app
 EXPOSE 1234
 COPY ./src /usr/src/app/src
 COPY config.sh ./
-COPY ./docker/docker-deploy/requirements.txt ./
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN /bin/bash -c "source ./config.sh; python ./src/flask/run_deploy.py"
-#CMD [ "python", "./src/flask/run_deploy.py"]
