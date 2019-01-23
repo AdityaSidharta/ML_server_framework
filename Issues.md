@@ -1,3 +1,4 @@
 # ISSUES
 
-1. Still need to resolve the issue of connection between different docker : how does docker-deploy talks to docker-minio and docker-database?
+1. `docker-deploy` should access the ip address of the different containers via docker-compose
+2. Fill data should utilize the localhost port mapping in performing the operation.

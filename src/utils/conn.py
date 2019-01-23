@@ -11,6 +11,8 @@ from src.utils.envs import (
     postgres_username,
 )
 
+# TODO : Should have two types of minio client and db connections
+
 
 def create_minio(access_key, secret_key, port):
     minio_client = Minio(
