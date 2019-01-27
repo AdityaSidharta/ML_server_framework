@@ -2,7 +2,7 @@ import pandas as pd
 from flask_restful import reqparse, Resource
 
 from src.components.api import Api
-from src.flask import app, api
+from src.docker_deploy import app, api
 from src.utils.conn import docker_minio_client
 from src.utils.envs import (
     titanic_schema_filename,

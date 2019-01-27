@@ -1,0 +1,10 @@
+pandas==0.23.4
+sqlalchemy==1.2.15
+psycopg2==2.7.6.1
+oyaml
+minio==4.0.8
+flask==1.0.2
+flask-restful==0.3.7
+numpy
+scikit-learn
+oyaml

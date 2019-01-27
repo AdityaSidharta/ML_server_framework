@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
+oyaml = "*"
+minio = "*"
+pandas-summary = "*"
+numpy = "*"
+scikit-learn = "*"
+tqdm = "*"
+ipykernel = "*"
+nbstripout = "*"
+pylint = "*"
+flask = "*"
+flask_restful = "*"
+
+[requires]
+python_version = "3.6"

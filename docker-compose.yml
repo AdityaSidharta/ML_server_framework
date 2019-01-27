@@ -1,27 +1,31 @@
 version: "3"
 services:
-  ml_server_db:
-    build:
-      context: ./docker/docker-postgres
+  postgres:
+    image: postgres:11.1
     environment:
       - POSTGRES_USER=${POSTGRES_USERNAME}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./docker-data/docker-minio:/var/lib/postgresql/data
     ports:
-      - ${POSTGRES_PORT}:5432
-  ml_server_minio:
-    build:
-      context: ./docker/docker-minio
+      - 5432:5432
+  minio:
+    image: minio/minio:latest
     environment:
       - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY}
       - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
     ports:
-      - ${MINIO_PORT}:9000
-    command: server ${PWD}/docker/docker-minio/data
-  ml_server_deploy:
-    build:
-      context: ./docker/docker-deploy
+      - 9000:9000
+    volumes:
+      - ./docker-data/docker-minio:/data
+    command: server ./docker-data/docker-minio
+  deploy:
+    image: python:3.6.7
     ports:
-      - ${FLASK_PORT}:1234
+      - 1234:1234
     depends_on:
-      - ml_server_minio
-      - ml_server_db
+      - postgres
+      - minio
+    volumes:
+      - .:/usr/src/app
+    command: tail -f /dev/null
