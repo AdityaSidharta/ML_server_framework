@@ -1,0 +1,27 @@
+version: "3"
+services:
+  ml_server_db:
+    image: postgres:11.1
+    env_file:
+      - configs/postgres_db.env
+    ports:
+      - 5432:5432
+  ml_server_minio:
+    image: minio/minio:latest
+    env_file:
+      - configs/minio.env
+    ports:
+      - 9000:9000
+    command: server ./docker/docker-minio/data
+    volumes:
+      - ./docker_data:/data
+  ml_server_deploy:
+    image: python:3.6.7
+    command: tail -f /dev/null
+    ports:
+      - 1234:1234
+    volumes:
+      - ./:/shared_folder
+    depends_on:
+      - ml_server_minio
+      - ml_server_db
