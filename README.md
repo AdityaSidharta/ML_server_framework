@@ -10,6 +10,13 @@ General Framework in Deploying ML model as a REST API Service
 make docker-compose
 ```
 
+GET requests will be available at [http://localhost:1234] with the following input:
+
+    - class: [1, 2, 3]
+    - sex: [M, F]
+    - age: int
+    - embarked: ['C', 'S', 'Q']
+
 
 ## Prediction as a Service
 The list of problems that I would like to tackle in this projects are
