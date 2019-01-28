@@ -5,8 +5,6 @@ services:
     environment:
       - POSTGRES_USER=${POSTGRES_USERNAME}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    volumes:
-      - ./docker-data/docker-minio:/var/lib/postgresql/data
     ports:
       - 5432:5432
   minio:
@@ -16,16 +14,22 @@ services:
       - MINIO_SECRET_KEY=${MINIO_SECRET_KEY}
     ports:
       - 9000:9000
-    volumes:
-      - ./docker-data/docker-minio:/data
     command: server ./docker-data/docker-minio
-  deploy:
-    image: python:3.6.7
-    ports:
-      - 1234:1234
+  filldata:
+    build: .
     depends_on:
       - postgres
       - minio
-    volumes:
-      - .:/usr/src/app
-    command: tail -f /dev/null
+    command: filldata
+  model:
+    build: .
+    depends_on:
+      - filldata
+    command: model
+  deploy:
+    build: .
+    ports:
+      - 1234:1234
+    depends_on:
+      - model
+    command: deploy

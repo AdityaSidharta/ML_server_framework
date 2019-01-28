@@ -89,7 +89,7 @@ class Prediction(Resource):
             return self._output(status_code, status_message, args, 0.0)
 
 
-def run_deploy():
+def main():
     model = Api(
         titanic_schema_filename,
         titanic_encoder_filename,
@@ -99,8 +99,8 @@ def run_deploy():
     model.load_api()
     api.add_resource(Prediction, "/", resource_class_kwargs={"model": model})
     app.config["BUNDLE_ERRORS"] = True
-    app.run(host="0.0.0.0", port=1234)
+    app.run(host="0.0.0.0", port=1234, debug=True)
 
 
 if __name__ == "__main__":
-    run_deploy()
+    main()

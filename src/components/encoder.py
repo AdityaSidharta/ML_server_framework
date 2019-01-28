@@ -24,7 +24,7 @@ class Encoder:
     def load_encoder(self, encoder_name):
         self.init = True
         bucket_name = get_latest_version(self.minio_client)
-        print(bucket_name)
+        print("Using version: {}".format(bucket_name))
         download_minio(self.minio_client, bucket_name, encoder_name)
         self.encoder = read_model(encoder_name)
 

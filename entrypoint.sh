@@ -10,17 +10,19 @@ then
     exit 1
 fi
 
-
 if [ $1 == 'deploy' ]
 then
-    bash libs/run_deploy.sh
+    bash libs/run_docker_deploy.sh
 elif [ $1 == 'model' ]
 then
-    bash libs/run_model.sh
-elif [ $1 == 'fill_data' ]
+    bash libs/run_docker_model.sh
+elif [ $1 == 'filldata' ]
 then
-    bash libs/run_fill_data.sh
+    bash libs/run_docker_filldata.sh
+elif [ $1 == 'debug' ]
+then
+    tail -f /dev/null
 else
-    echo "The argument is not valid, only the following [deploy, model, fill_data] is accepted"
+    echo "The argument is not valid, only the following [deploy, model, filldata, debug] is accepted"
     exit 1
 fi
