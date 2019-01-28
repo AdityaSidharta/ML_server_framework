@@ -2,10 +2,13 @@
 General Framework in Deploying ML model as a REST API Service
 
 ## Instalation
-Coming Soon
+- `docker` : installation can be found [here](https://docs.docker.com/install/)
+- `docker-compose` : installation can be found [here](https://docs.docker.com/compose/install/)
 
 ## Usage
-Coming Soon
+```
+make docker-compose
+```
 
 
 ## Prediction as a Service
@@ -64,3 +67,7 @@ perform links to db container, should be able to read, write model to db, should
 
 ### datafill
 - **Airflow** : Perform continuous data update
+
+## Microservice Diagram
+
+Coming Soon
