@@ -1,9 +1,5 @@
 from src.utils.conn import docker_db_conn, docker_minio_client
-from src.utils.envs import (
-    titanic_filename,
-    titanic_schema_filename,
-    titanic_schema_bucket,
-)
+from src.utils.envs import titanic_filename, titanic_schema_filename, titanic_schema_bucket
 from src.utils.io import read_data, write_db, write_minio
 
 

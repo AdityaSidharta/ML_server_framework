@@ -1,13 +1,7 @@
 from sklearn.linear_model import LogisticRegressionCV
 
 from src.utils.ds import get_latest_version
-from src.utils.io import (
-    download_minio,
-    read_model,
-    write_minio,
-    write_model,
-    list_bucket_minio,
-)
+from src.utils.io import download_minio, read_model, write_minio, write_model, list_bucket_minio
 
 
 class Model:
@@ -18,9 +12,7 @@ class Model:
         self.bucket_name = bucket_name
 
     def _is_init(self):
-        assert (
-            self.init
-        ), "Model have not been initialized using load_model / train_model"
+        assert self.init, "Model have not been initialized using load_model / train_model"
 
     def load_model(self, model_name):
         self.init = True

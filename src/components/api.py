@@ -46,15 +46,11 @@ class Api:
         df, y_array = split_target_columns(df_full, self.schema)
 
         # feat_eng
-        self.encoder = create_encoder_titanic(
-            df, self.schema, self.minio_client, self.bucket_name
-        )
+        self.encoder = create_encoder_titanic(df, self.schema, self.minio_client, self.bucket_name)
         x_array = do_encode(df, self.schema, self.encoder)
 
         # ml_model
-        self.model = create_model_titanic(
-            x_array, y_array, self.minio_client, self.bucket_name
-        )
+        self.model = create_model_titanic(x_array, y_array, self.minio_client, self.bucket_name)
 
         self.save_components()
 

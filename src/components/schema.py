@@ -42,75 +42,41 @@ class Schema:
 
     def get_int_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_type(column_name) == "int"
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_type(column_name) == "int"]
 
     def get_float_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_type(column_name) == "float"
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_type(column_name) == "float"]
 
     def get_str_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_type(column_name) == "str"
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_type(column_name) == "str"]
 
     def get_date_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_type(column_name) == "date"
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_type(column_name) == "date"]
 
     def get_time_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_type(column_name) == "time"
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_type(column_name) == "time"]
 
     def get_non_encoding_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_encoding(column_name) == ""
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_encoding(column_name) == ""]
 
     def get_oh_encoding_cols(self):
         self._is_init()
         return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_encoding(column_name) == "OneHotEncoder"
+            column_name for column_name in self.get_col_names() if self.get_col_encoding(column_name) == "OneHotEncoder"
         ]
 
     def get_non_target_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if not self.get_col_target(column_name)
-        ]
+        return [column_name for column_name in self.get_col_names() if not self.get_col_target(column_name)]
 
     def get_target_cols(self):
         self._is_init()
-        return [
-            column_name
-            for column_name in self.get_col_names()
-            if self.get_col_target(column_name)
-        ]
+        return [column_name for column_name in self.get_col_names() if self.get_col_target(column_name)]
 
     def infer_schema(self, df):
         self.init = True
@@ -123,12 +89,7 @@ class Schema:
         yaml_result = OrderedDict()
         for column_name in df.columns:
             if column_name in int_cols:
-                yaml_result[column_name] = {
-                    "type": "int",
-                    "na_value": -1,
-                    "encoding": "",
-                    "target": False,
-                }
+                yaml_result[column_name] = {"type": "int", "na_value": -1, "encoding": "", "target": False}
             elif column_name in float_cols:
                 yaml_result[column_name] = {
                     "type": "float",
@@ -153,12 +114,7 @@ class Schema:
                     "target": False,
                 }
             else:
-                yaml_result[column_name] = {
-                    "type": "str",
-                    "na_value": "",
-                    "encoding": "OneHotEncoder",
-                    "target": False,
-                }
+                yaml_result[column_name] = {"type": "str", "na_value": "", "encoding": "OneHotEncoder", "target": False}
         self.yaml_file = yaml_result
 
     def load_schema(self, schema_name):

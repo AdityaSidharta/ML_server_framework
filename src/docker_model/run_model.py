@@ -4,8 +4,8 @@ from src.utils.io import *
 
 
 def main():
-    df_full = read_data('titanic.csv')
-    api = Api('titanic_schema.yml', 'titanic_encoder.pkl', 'titanic_model.pkl', docker_minio_client)
+    df_full = read_data("titanic.csv")
+    api = Api("titanic_schema.yml", "titanic_encoder.pkl", "titanic_model.pkl", docker_minio_client)
     api.fit_api(df_full)
 
 

@@ -13,9 +13,7 @@ class Encoder:
         self.bucket_name = bucket_name
 
     def _is_init(self):
-        assert (
-            self.init
-        ), "Encoder have not been initialized using read_encoder / create_encoder"
+        assert self.init, "Encoder have not been initialized using read_encoder / create_encoder"
 
     def get_n_features(self):
         self._is_init()
@@ -38,13 +36,7 @@ class Encoder:
         for column in encoder_columns:
             df[column] = df[column].astype(str)
         self.encoder = ColumnTransformer(
-            [
-                (
-                    "oh_enc",
-                    OneHotEncoder(sparse=False, handle_unknown="ignore"),
-                    encoder_columns,
-                )
-            ],
+            [("oh_enc", OneHotEncoder(sparse=False, handle_unknown="ignore"), encoder_columns)],
             remainder="passthrough",
             sparse_threshold=0.0,
         )
