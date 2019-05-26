@@ -5,6 +5,7 @@ oyaml
 minio==4.0.8
 flask==1.0.2
 flask-restful==0.3.7
+apache-airflow
 numpy
 scikit-learn
 oyaml

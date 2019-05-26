@@ -10,3 +10,5 @@ export POSTGRES_IPADDRESS=postgres
 export MINIO_ACCESS_KEY=ml_server_minio
 export MINIO_SECRET_KEY=ml_server_password
 export MINIO_IPADDRESS=minio
+
+export AIRFLOW_HOME=~/airflow
