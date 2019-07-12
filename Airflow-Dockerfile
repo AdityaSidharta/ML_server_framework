@@ -1,0 +1,5 @@
+FROM puckel/docker-airflow:1.10.2
+
+COPY data ./dags/data
+COPY libs ./dags/libs
+COPY src ./dags/src

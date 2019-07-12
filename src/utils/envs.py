@@ -1,6 +1,6 @@
 import os
 
-project_path = os.getenv("PROJECT_PATH")
+project_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 postgres_username = os.getenv("POSTGRES_USERNAME")
 postgres_password = os.getenv("POSTGRES_PASSWORD")
